@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "Humnst777 BT";
+    src:         url('/fonts/Humanist777.ttf');
+}
+
+body {
+    font-family: "Humnst777 BT", Verdana, Helvetica, Arial, sans-serif;
+    margin-top:  60px;
+}
+
+/* navbar */
+.navbar-inverse {
+    -webkit-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.75);
+    -moz-box-shadow:    0 3px 7px 0 rgba(0, 0, 0, 0.75);
+    box-shadow:         0 3px 7px 0 rgba(0, 0, 0, 0.75);
+    background:         #063;
+    background:         -moz-linear-gradient(left, #063 0%, #008743 25%, #063 100%);
+    background:         -webkit-linear-gradient(left, #063 0%, #008743 25%, #063 100%);
+    background:         linear-gradient(to right, #063 0%, #008743 25%, #063 100%);
+    filter:             progid:DXImageTransform.Microsoft.gradient(
+                                startColorstr='#006633',
+                                endColorstr='#006633',
+                                GradientType=1);
+    border:             none;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > a:hover {
+    color:            #000;
+    background-color: #FC0;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #033;
+}
+
+/* navbar button */
+.navbar-toggle {
+    height:     30px;
+    margin-top: 15px;
+    width:      50px;
+}
+
+.navbar-inverse .navbar-toggle {
+    background-color: #FC0;
+}
+
+.ufabc-rlogo {
+    height:     inherit;
+    margin-top: -16px;
+}
+
+/* footer */
+.footer {
+    background-color: #063;
+    border-top:       3px solid #FC0;
+    height:           33px;
+}
+
+/* forms */
+.btn {
+    border-radius: 0;
+}
+
+.btn-search {
+    align-items: center;
+    margin-top:  30px;
+}
+
+.form-control {
+    border-radius: 0;
+}

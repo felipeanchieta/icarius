@@ -1,0 +1,17 @@
+html {
+    min-height: 100%;
+    position:   relative;
+}
+
+body {
+    margin-bottom: 30px;
+}
+
+.footer {
+    background-color: #444444;
+    bottom:           0;
+    color:            #E8E8E8;
+    height:           30px;
+    width:            100%;
+    position:         absolute;
+}
