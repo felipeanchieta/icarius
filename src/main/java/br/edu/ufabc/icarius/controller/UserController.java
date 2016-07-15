@@ -1,4 +1,4 @@
-package br.edu.ufabc.icarius.controller.forms;
+package br.edu.ufabc.icarius.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

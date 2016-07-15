@@ -1,5 +1,6 @@
-package br.edu.ufabc.icarius.controller.forms;
+package br.edu.ufabc.icarius.controller;
 
+import br.edu.ufabc.icarius.controller.forms.ReturnBooksForm;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

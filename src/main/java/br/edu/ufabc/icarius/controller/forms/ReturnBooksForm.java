@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by fcosta on 15/07/16.
  */
-class ReturnBooksForm {
+public class ReturnBooksForm {
     private List<Book> bookList;
     private User user;
 
