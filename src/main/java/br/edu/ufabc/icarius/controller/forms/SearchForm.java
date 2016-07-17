@@ -1,34 +1,24 @@
 package br.edu.ufabc.icarius.controller.forms;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by fcosta on 15/07/16.
  */
 public class SearchForm {
 
-    private List<String> searchExpression;
+    @NotNull
+    private String searchExpression;
 
     public SearchForm() {
     }
 
-    public List<String> getSearchExpression() {
+    public String getSearchExpression() {
         return searchExpression;
     }
 
-    public void setSearchExpression(List<String> searchExpression) {
+    public void setSearchExpression(String searchExpression) {
         this.searchExpression = searchExpression;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        SearchForm that = (SearchForm) o;
-
-        return searchExpression != null ? searchExpression.equals(that.searchExpression) : that.searchExpression == null;
-
     }
 
     @Override
