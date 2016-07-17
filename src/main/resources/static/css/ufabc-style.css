@@ -50,6 +50,31 @@ body {
     background-color: #FC0;
 }
 
+.navbar-inverse .navbar-nav > li > form > a {
+    color: #FFF;
+}
+
+.navbar-nav > li > form > a {
+    line-height:    20px;
+    padding-top:    10px;
+    padding-bottom: 10px;
+}
+
+.navbar-nav > li > form > a:hover {
+    background-color: #033;
+    text-decoration:  none;
+}
+
+.navbar-nav > li > form > a:focus {
+    text-decoration: none;
+}
+
+.nav > li > form > a {
+    position: relative;
+    display:  block;
+    padding:  15px 15px;
+}
+
 .ufabc-rlogo {
     height:     inherit;
     margin-top: -16px;
