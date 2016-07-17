@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Bibliotecas UFABC</title>
+
+  <link th:href="@{css/bootstrap.min.css}" href="../../static/css/bootstrap.min.css" rel="stylesheet"/>
+  <link th:href="@{css/icarius-style.css}" href="../../static/css/icarius-style.css" rel="stylesheet"/>
+  <link th:href="@{css/ufabc-style.css}" href="../../static/css/ufabc-style.css" rel="stylesheet"/>
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="nav">
+  <div class="container-fluid">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#icarius-nav"></button>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img class="ufabc-rlogo" src="../../static/img/ufabc-rlogo.png" th:src="@{img/ufabc-rlogo.png}" alt="Universidade
+                     Federal do ABC"/>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="icarius-nav">
+      <ul class="nav navbar-nav header-nav">
+        <li id="home-nav" class="active">
+          <a th:href="@{/}" href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+        </li>
+        <li id="advsearch-nav">
+          <a th:href="@{/adv-search}" href="#"><span class="glyphicon glyphicon-search"></span> Pesquisa
+            Avançada</a>
+        </li>
+        <li id="reserve-nav">
+          <a th:href="@{/reserves}"><span class="glyphicon glyphicon-heart"></span> Reservas</a>
+        </li>
+        <li id="lend-nav">
+          <a th:href="@{/loans}"><span class="glyphicon glyphicon-flash"></span> Empréstimos</a>
+        </li>
+        <li id="status.jsp-nav">
+          <a th:href="@{/details}"><span class="glyphicon glyphicon-info-sign"></span> Status</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li th:if="${#authentication.isAuthenticated()}">
+          <form th:action="@{/logout}" method="post">
+            <a href="#" onclick="this.parentNode.submit()">
+              <span class="glyphicon glyphicon-exit"></span> Sair
+            </a>
+          </form>
+        </li>
+        <li th:unless="${#authentication.isAuthenticated()}">
+          <a th:href="@{/login}" href="/login">
+            <span class="glyphicon glyphicon-log-in"></span> Entrar
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+</html>
