@@ -18,13 +18,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" th:include="fragments/nav :: nav"></nav>
 <section>
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 center-block">
-        <img class="img-responsive" src="img/icarius-main-logo.png" th:src="@{img/icarius-main-logo.png}"
-             alt="Logotipo Icarius"/>
-      </div>
-    </div>
-
     <form class="form-horizontal" th:action="@{/search}" method="get" role="form">
       <div class="form-group">
         <input type="text" class="form-control" name="searchExpression" id="search-box" autofocus="autofocus"/>
