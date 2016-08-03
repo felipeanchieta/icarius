@@ -1,6 +1,6 @@
 # icarius
 
-[![Build Status](https://travis-ci.org/felipeanchieta/icarius.svg?branch=master)](https://travis-ci.org/felipeanchieta/icarius)
+[![Build Status](https://travis-ci.org/felipeanchieta/icarius.svg?branch=master)](https://travis-ci.org/felipeanchieta/icarius) [![Dependency Status](https://www.versioneye.com/user/projects/57a27cd0447bcc00469bdee9/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57a27cd0447bcc00469bdee9)
 
 Web Programming. Final project.
 
