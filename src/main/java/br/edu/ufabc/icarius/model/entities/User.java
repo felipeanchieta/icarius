@@ -1,47 +1,38 @@
 package br.edu.ufabc.icarius.model.entities;
 
 import javax.persistence.*;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created by fcosta on 15/07/16.
- */
 @Entity
+@Table(name = "USERS")
 public class User {
+
     @Id
-    private Long cpf;
-
+    private String cpf;
     private String name;
-
     private String username;
-
-    private String password;
+    @Column(columnDefinition = "BINARY(32)")
+    private byte[] password;
 
     @Temporal(TemporalType.DATE)
-    private Calendar birthDate;
+    @Column(name = "birthdate")
+    private Date birthDate;
 
-    @OneToMany
-    private List<Book> loanBooks;
+    @OneToMany(mappedBy = "cpf")
+    private List<Loan> loanBooks;
 
-    @OneToMany
-    private List<Book> reserves;
+    @OneToMany(mappedBy = "cpf")
+    private List<Reservation> reservations;
 
     public User() {
     }
 
-    public User(Long cpf, String name, String username, String password) {
-        this.cpf = cpf;
-        this.name = name;
-        this.username = username;
-        this.password = password;
-    }
-
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -53,11 +44,11 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
+    public byte[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(byte[] password) {
         this.password = password;
     }
 
@@ -69,27 +60,27 @@ public class User {
         this.username = username;
     }
 
-    public Calendar getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Calendar birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
-    public List<Book> getLoanBooks() {
+    public List<Loan> getLoanBooks() {
         return loanBooks;
     }
 
-    public void setLoanBooks(List<Book> loanBooks) {
+    public void setLoanBooks(List<Loan> loanBooks) {
         this.loanBooks = loanBooks;
     }
 
-    public List<Book> getReserves() {
-        return reserves;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setReserves(List<Book> reserves) {
-        this.reserves = reserves;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

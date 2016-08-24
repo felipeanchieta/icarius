@@ -7,12 +7,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-/**
- * Created by fcosta on 16/07/16.
- */
 @Configuration
 @EnableWebSecurity
 public class IcariusSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private IcariusAuthProvider authProvider;
 
@@ -24,6 +22,7 @@ public class IcariusSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/js/**").permitAll()
             .antMatchers("/img/**").permitAll()
             .antMatchers("/fonts/**").permitAll()
+            .antMatchers("/new_user/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()

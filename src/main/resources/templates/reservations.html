@@ -12,20 +12,38 @@
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" th:include="fragments/nav :: nav"></nav>
-<section style="margin-top: 60px;">
-  <div class="container">
-    <h2>Usuário <span th:text="${username}">Joãozinho</span></h2>
-    <div class="row">
-      <div class="col-md-12">
-        <p><strong>Usuário:</strong> <span th:text="${name}">Alguém</span></p>
-        <p><strong>Data de Nascimento: </strong> <span th:text="${birthDate}">01-Jan-1970</span></p>
-        <p><strong>Número de empréstimos: </strong> <span th:text="${loans}">0</span></p>
-        <p><strong>Número de reservas: </strong> <span th:text="${reservations}">0</span></p>
-      </div>
-    </div>
+<div class="container">
+  <h2>Reservas</h2>
+  <table class="table table-bordered table-responsive">
+    <thead>
+    <tr>
+      <th>ISBN</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Editora</th>
+      <th>Localização</th>
+      <th>Ano</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="bookList" type="br.edu.ufabc.icarius.model.entities.Book"*/-->
+    <tr th:each="book : ${bookList}">
+      <td><a th:href="@{cancelReservation(isbn=${book.isbn})}" th:text="${book.isbn}"></a></td>
+      <td th:text="${book.title}"></td>
+      <td th:text="${book.author}"></td>
+      <td th:text="${book.press}"></td>
+      <td th:text="${book.location}"></td>
+      <td th:text="${book.year}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p><strong>Nota:</strong> Para cancelar uma reserva, clique no ISBN</p>
     </div>
   </div>
-</section>
+</div>
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/icarius-js.js" th:src="@{/js/icarius-js.js}"></script>

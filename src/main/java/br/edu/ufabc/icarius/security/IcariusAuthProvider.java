@@ -1,6 +1,7 @@
 package br.edu.ufabc.icarius.security;
 
 import br.edu.ufabc.icarius.model.UsersRepository;
+import br.edu.ufabc.icarius.util.AuthenticationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,21 +15,22 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.Collections;
 
-/**
- * Created by fcosta on 16/07/16.
- */
 @Component
 public class IcariusAuthProvider implements AuthenticationProvider {
 
     @Autowired
     private UsersRepository users;
 
+    @Autowired
+    private AuthenticationUtils authenticationUtils;
+
     @Override
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
         String username = (String) auth.getPrincipal();
         String password = (String) auth.getCredentials();
 
-        Long usersAuthentic = users.countByUsernameAndPassword(username, password);
+        byte[] sha256Password = authenticationUtils.generateSha256(password);
+        Long usersAuthentic = users.countByUsernameAndPassword(username, sha256Password);
 
         if (usersAuthentic == 1) {
             SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ADMIN");

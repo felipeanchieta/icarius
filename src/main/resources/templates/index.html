@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -18,9 +18,11 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" th:include="fragments/nav :: nav"></nav>
 <section>
   <div class="container">
+    <h2>Página Inicial</h2>
     <form class="form-horizontal" th:action="@{/search}" method="get" role="form">
       <div class="form-group">
-        <input type="text" class="form-control" name="searchExpression" id="search-box" autofocus="autofocus"/>
+        <input type="text" class="form-control" name="searchExpression" id="search-box" autofocus="autofocus"
+               placeholder="Se quiser pesquisar todos os livros, deixe em branco e aperte ENTER!"/>
         <button type="submit" class="btn btn-default btn-search">Pesquisar</button>
       </div>
     </form>

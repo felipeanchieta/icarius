@@ -1,6 +1,5 @@
 package br.edu.ufabc.icarius.controller;
 
-import br.edu.ufabc.icarius.controller.forms.AdvancedSearchForm;
 import br.edu.ufabc.icarius.controller.forms.SearchForm;
 import br.edu.ufabc.icarius.model.BooksRepository;
 import br.edu.ufabc.icarius.model.entities.Book;
@@ -10,49 +9,38 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
-/**
- * Created by fcosta on 15/07/16.
- */
 @Controller
 public class SearchController {
+
     @Autowired
     private BooksRepository booksRepository;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Book> search(@ModelAttribute @Valid SearchForm form, BindingResult result) {
-        if (!result.hasErrors()) {
-            // add error
+    public ModelAndView search(@ModelAttribute @Valid SearchForm form, BindingResult result) {
+        if (result.hasErrors()) return null;
+
+        if (form.getSearchExpression().isEmpty()) {
+            return new ModelAndView("search-results")
+                .addObject("bookList", booksRepository.findAll());
         }
 
-        return booksRepository.findByTitle(form.getSearchExpression());
-    }
+        Set<Book> searchResults = booksRepository.findByTitle(form.getSearchExpression());
+        searchResults.addAll(booksRepository.findByIsbn(form.getSearchExpression()));
+        searchResults.addAll(booksRepository.findByAuthor(form.getSearchExpression()));
+        searchResults.addAll(booksRepository.findByPress(form.getSearchExpression()));
+        searchResults.addAll(booksRepository.findByLocation(form.getSearchExpression()));
+        try {
+            searchResults.addAll(booksRepository.findByYear(Integer.parseInt(form.getSearchExpression())));
+        } catch (NumberFormatException ignored) {
+        }
 
-    @RequestMapping(value = "/adv-search-form", method = RequestMethod.GET)
-    @ResponseBody
-    public String advSearchForm() {
-        return "";
-    }
-
-    @RequestMapping(value = "/adv-search", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Book> advSearchResults(AdvancedSearchForm form) {
-        Set<Book> results = new TreeSet<>();
-
-        if (form.getIsbn() != null) results.addAll(booksRepository.findByIsbn(form.getIsbn()));
-        if (form.getAuthorList() != null) results.addAll(booksRepository.findByAuthorList(form.getAuthorList()));
-        if (form.getPress() != null) results.addAll(booksRepository.findByPress(form.getPress()));
-        if (form.getLocation() != null) results.addAll(booksRepository.findByLocation(form.getLocation()));
-        if (form.getYear() != null) results.addAll(booksRepository.findByYear(form.getYear()));
-
-        return new ArrayList<>(results);
+        ModelAndView modelAndView = new ModelAndView("search-results");
+        modelAndView.addObject("bookList", searchResults);
+        return modelAndView;
     }
 }

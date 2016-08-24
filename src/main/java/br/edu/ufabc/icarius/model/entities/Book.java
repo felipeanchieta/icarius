@@ -2,21 +2,16 @@ package br.edu.ufabc.icarius.model.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
-import java.util.Objects;
+import javax.persistence.Table;
 
-/**
- * Created by fcosta on 15/07/16.
- */
 @Entity
+@Table(name = "BOOKS")
 public class Book {
 
     @Id
     private String isbn;
     private String title;
-    @OneToMany
-    private List<Author> authorList;
+    private String author;
     private String press;
     private String location;
     private Integer year;
@@ -45,12 +40,12 @@ public class Book {
         this.title = title;
     }
 
-    public List<Author> getAuthorList() {
-        return authorList;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthorList(List<Author> authorList) {
-        this.authorList = authorList;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getPress() {
@@ -75,30 +70,5 @@ public class Book {
 
     public void setYear(Integer year) {
         this.year = year;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return Objects.equals(isbn, book.isbn) &&
-            Objects.equals(title, book.title) &&
-            Objects.equals(authorList, book.authorList) &&
-            Objects.equals(press, book.press) &&
-            Objects.equals(location, book.location) &&
-            Objects.equals(year, book.year);
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-            "isbn='" + isbn + '\'' +
-            ", title='" + title + '\'' +
-            ", authorList=" + authorList +
-            ", press='" + press + '\'' +
-            ", location='" + location + '\'' +
-            ", year=" + year +
-            '}';
     }
 }
