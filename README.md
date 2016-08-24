@@ -10,9 +10,11 @@ Java 8 + Spring MVC + Spring JPA + Hibernate + Tomcat + MySQL + Thymeleaf. Isn't
 
 1) Install Apache Maven 3 and Oracle JDK or OpenJDK 8. Lower versions won't work and I will not support them anyhow.
 
-2) In this folder, go to your command prompt or terminal and type *mvn spring-boot:run*. Wait about 10 seconds after Maven installs the dependencies.
+2) *OPEN APPLICATION.PROPERTIES AT SRC/.../RESOURCES AND FILL THE MYSQL/MARIADB USER AND PASSWORD FIELDS*
 
-3) Go to localhost:8080 as soon as you can to see the result
+3) In this folder, go to your command prompt or terminal and type *mvn spring-boot:run*. Wait about 10 seconds after Maven installs the dependencies, or more, depending on your machine and Internet speed.
+
+4) Go to localhost:8080 as soon as you can to see the result
 
 ## how to contribute:
 
